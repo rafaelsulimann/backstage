@@ -9,31 +9,24 @@ spec:
   owner: user:guest
   type: service
 
-  # These parameters are used to generate the input form in the frontend, and are
-  # used to gather input data for the execution of the template.
   parameters:
-    - title: Fill in some steps
+    - title: Repository Name
       required:
-        - name
+        - repositoryName
       properties:
-        name:
-          title: Name
+        repositoryName:
+          title: Repository Name
           type: string
-          description: Unique name of the component
+          description: Nome do Repositório no GitHub
           ui:autofocus: true
-          ui:options:
-            rows: 5
-    - title: Choose a location
+    - title: GitHub User Token
       required:
-        - repoUrl
+        - repositoryUserToken
       properties:
-        repoUrl:
-          title: Repository Location
+        repositoryUserToken:
+          title: GitHub User Toekn
           type: string
-          ui:field: RepoUrlPicker
-          ui:options:
-            allowedHosts:
-              - github.com
+          description: Token de acesso da conta do github
 
   # These steps are executed in the scaffolder backend, using data that we gathered
   # via the parameters above.

@@ -1,0 +1,61 @@
+apiVersion: scaffolder.backstage.io/v1beta3  # Define a versão da API do scaffolder do Backstage.
+kind: Template  # Especifica que este é um 'Template'.
+metadata:
+  name: create-git-repo  # Nome único para identificar o template.
+  title: Create GitHub Repository  # Título amigável para o template.
+  description: Create a new GitHub Repository  # Descrição do propósito do template.
+spec:
+  owner: user:guest  # Define quem é o dono do template, neste caso, 'user:guest'.
+  type: service  # Tipo do componente que o template irá criar, neste caso, um 'service'.
+  parameters: # 'parameters' define uma lista de entradas que os usuários precisam fornecer.
+
+    # Primeiro conjunto de parâmetros relacionado ao nome do repositório.
+    - title: Repository Name  # Título descritivo para este grupo de parâmetros.
+      required:
+        - repositoryName  # Define 'repositoryName' como um campo obrigatório.
+      properties:
+        repositoryName:
+          title: Repository Name  # Título amigável para o campo 'repositoryName'.
+          type: string  # Tipo do campo, que é uma string.
+          description: Nome do Repositório no GitHub  # Descrição do campo, explicando seu propósito.
+          ui:autofocus: true  # Campo recebe foco automaticamente na interface do usuário.
+
+    # Segundo conjunto de parâmetros relacionado ao token de usuário do GitHub.
+    - title: GitHub User Token  # Título descritivo para este grupo de parâmetros.
+      required:
+        - repositoryUserToken  # Define 'repositoryUserToken' como um campo obrigatório.
+      properties:
+        repositoryUserToken:
+          title: GitHub User Token  # Título amigável para o campo 'repositoryUserToken'.
+          type: string  # Tipo do campo, que é uma string.
+          description: Token de acesso da conta do github  # Descrição do campo, explicando seu propósito.
+  steps: # 'steps' define uma sequência de ações a serem executadas.
+
+    # Primeiro passo na sequência.
+    - id: createGitRepo  # Identificador único para este passo.
+      action: rafael:createGitRepo  # Ação personalizada 'rafael:createGitRepo' a ser executada.
+      name: Create Git Repository  # Nome descritivo do passo.
+      input:  # Dados de entrada necessários para a ação.
+        repositoryName: ${{ parameters.repositoryName }}  # O nome do repositório, obtido a partir dos parâmetros definidos anteriormente.
+        repositoryUserToken: ${{ parameters.repositoryUserToken }}  # O token de usuário do GitHub, também obtido dos parâmetros.
+  output:
+    links:
+      - title: ${{ parameters.repositoryName }}  # Título para o link de saída.
+        url: https://github.com/rafaelsulimann/${{ parameters.repositoryName }}  # URL para o repositório criado.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

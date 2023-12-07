@@ -2,6 +2,7 @@ import { CatalogClient } from '@backstage/catalog-client';
 import { createRouter } from '@backstage/plugin-scaffolder-backend';
 import { Router } from 'express';
 import type { PluginEnvironment } from '../types';
+import { createGitRepo } from './scaffolder/createGitRepo';
 
 export default async function createPlugin(
   env: PluginEnvironment,
@@ -10,7 +11,12 @@ export default async function createPlugin(
     discoveryApi: env.discovery,
   });
 
+  const actions = [
+    createGitRepo()
+  ]
+
   return await createRouter({
+    actions: actions,
     logger: env.logger,
     config: env.config,
     database: env.database,

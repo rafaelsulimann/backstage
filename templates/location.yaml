@@ -1,0 +1,12 @@
+--- # Início do documento YAML.
+
+apiVersion: backstage.io/v1alpha1 # Especifica a versão da API do Backstage utilizada.
+kind: Location # Indica que este documento define uma 'Location' no Backstage.
+
+metadata: # Seção de metadados sobre a 'Location'.
+  name: sulimann-templates # Nome único identificador desta 'Location'.
+
+spec: # Especificação da 'Location'.
+  type: file # Indica que o tipo desta 'Location' é uma URL.
+  targets: # Lista de alvos (targets) para esta 'Location'.
+    - ./create-git-repo.yaml # URL para o primeiro recurso de template.

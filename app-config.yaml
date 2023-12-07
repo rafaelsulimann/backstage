@@ -69,35 +69,16 @@ auth:
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
 
-catalog:
-  import:
-    entityFilename: catalog-info.yaml
-    pullRequestBranchName: backstage-integration
-  rules:
-    - allow: [Component, System, API, Resource, Location]
-  locations:
-    # Local example data, file locations are relative to the backend process, typically `packages/backend`
-    - type: file
-      target: ../../examples/entities.yaml
+catalog: # Configurações do catálogo do Backstage.
+  import: # Configurações relacionadas à importação de entidades para o catálogo.
+    entityFilename: catalog-info.yaml # Nome do arquivo que contém informações da entidade para importação.
+    pullRequestBranchName: backstage-integration # Nome padrão da branch para pull requests de integração.
 
-    # Local example template
-    - type: file
-      target: ../../examples/template/template.yaml
-      rules:
-        - allow: [Template]
+  rules: # Regras definindo quais tipos de entidades são permitidas no catálogo.
+    - allow: [Component, Template, System, API, Resource, Location] # Lista de tipos de entidades permitidas.
 
-    # Local example organizational data
-    - type: file
-      target: ../../examples/org.yaml
-      rules:
-        - allow: [User, Group]
-
-    ## Uncomment these lines to add more example data
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
-
-    ## Uncomment these lines to add an example org
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
-    #   rules:
-    #     - allow: [User, Group]
+  locations: # Define locais (locations) de onde o catálogo pode carregar entidades.
+    - type: file # Indica que o tipo da localização é uma FILE.
+      target: ../../templates/location.yaml # PATH do recurso a ser carregado no catálogo.
+      rules: # Regras específicas para esta localização.
+        - allow: [Template, Location] # Tipos de entidades permitidos especificamente para esta localização.
