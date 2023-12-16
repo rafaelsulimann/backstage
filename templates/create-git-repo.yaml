@@ -5,7 +5,7 @@ metadata:
   title: Create GitHub Repository  # Título amigável para o template.
   description: Create a new GitHub Repository  # Descrição do propósito do template.
 spec:
-  owner: user:guest  # Define quem é o dono do template, neste caso, 'user:guest'.
+  owner: user:test  # Define quem é o dono do template, neste caso, 'user:guest'.
   type: service  # Tipo do componente que o template irá criar, neste caso, um 'service'.
   parameters: # 'parameters' define uma lista de entradas que os usuários precisam fornecer.
 

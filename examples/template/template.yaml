@@ -27,6 +27,14 @@ spec:
           title: GitHub User Toekn
           type: string
           description: Token de acesso da conta do github
+    - title: Spring Template Infos
+      required:
+        - repositoryUserToken
+      properties:
+        orgName:
+          title: Organization Name
+          type: string
+          description: Organization name ex. com.<orgName>
 
   # These steps are executed in the scaffolder backend, using data that we gathered
   # via the parameters above.
