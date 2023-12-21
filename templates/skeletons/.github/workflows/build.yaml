@@ -3,20 +3,12 @@ on:
   push:
     branches:
       - master
-    # tags-ignore:
-    #   - '*'
-    # paths-ignore:
-    # - ".github/**"
 env:
   REGISTRY: ghcr.io/sulimanns
   IMAGE_BASE_NAME: ${{ '${{' }} github.repository }}
   ACCESS_TOKEN: ${{ '${{' }} secrets.ACCESS_TOKEN }}
   GITHUB_USER: ${{ '${{' }} secrets.DOCKERHUB_USER }}
-  # DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
-  # DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-
 jobs:
-
   publish:
     runs-on:  [ "self-hosted", "linux", "x64" ]
     steps:
@@ -28,7 +20,7 @@ jobs:
         with:
           access_token: ${{ '${{' }} env.ACCESS_TOKEN }}
           github_user: ${{ '${{' }} env.GITHUB_USER }}
-      
+          
       - name: Tag snapshot
         uses: tvdias/github-tagger@v0.0.1
         with:

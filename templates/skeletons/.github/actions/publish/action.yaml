@@ -7,17 +7,10 @@ inputs:
   github_user:
     description: 'Application version'
     required: true
-  # docker_password:
-  #   description: 'Application version'
-  #   required: true
-  # docker_user:
-  #   description: 'Application version'
-  #   required: true
 runs:
   using: "composite"
   steps:
 
-        #echo ${{ '${{' }} inputs.docker_password }} | docker login -u ${{ '${{' }} inputs.docker_user }} --password-stdin
     - run: |
         echo ${{ '${{' }} inputs.access_token }} | docker login ghcr.io -u ${{ '${{' }} inputs.github_user }} --password-stdin
         IMAGENAME="${{ values.name }}"

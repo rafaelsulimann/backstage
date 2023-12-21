@@ -11,8 +11,9 @@ runs:
     - run: |
         cd app/deployment/k8s/${{ values.name }}
         helm upgrade --install ${{ values.name }} ./ \
+        --namespace ${{ values.orgName }} --create-namespace \
         --set=image.repository=ghcr.io/sulimanns/${{ values.name }} \
-        --set=service.port=8080 \
+        --set=service.port=${{ values.applicationPort }} \
         --set=image.tag=${{ '${{' }} inputs.app_version}}
         
       shell: bash

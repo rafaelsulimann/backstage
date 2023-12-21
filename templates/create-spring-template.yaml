@@ -43,11 +43,19 @@ spec: # Especificação do que o template irá realizar.
         orgName:
           title: Organization Name
           type: string
-          description: Organization name ex. com.<orgName>
+          description: Inserir nome sem letras maiúsculas e tudo junto
         applicationName:
           title: Application Name
           type: string
-          description: Application name
+          description: nome da aplicação sem letras maiúsculas e tudo junto
+        applicationPort:
+          title: Application Port
+          type: string
+          description: Application Port. Ex:8080
+        springApplicationName:
+          title: Spring Application Name
+          type: string
+          description: Nome da classe principal do Spring. ex:Teste OBS:***Observação:Inserir sempre a primeira letra maiúscula e também em CamelCase, pois será o nome de uma classe
 
   # Define os passos que o scaffolder executará.
   steps:
@@ -60,7 +68,9 @@ spec: # Especificação do que o template irá realizar.
         targetPath: ./app # Caminho onde o template será colocado.
         values:
           name: ${{ parameters.applicationName }} # Utiliza o valor do parâmetro 'name'.
-          orgName: ${{ parameters.orgName }} # Utiliza o valor do parâmetro 'name'.
+          orgName: ${{ parameters.orgName }} # Utiliza o valor do parâmetro 'orgName'.
+          applicationPort: ${{ parameters.applicationPort }} # Utiliza o valor do parâmetro 'applicationPort'.
+          springApplicationName: ${{ parameters.springApplicationName }} # Utiliza o valor do parâmetro 'applicationPort'.
     - id: fetch-catalog
       name: Fetch Catalog
       action: fetch:template
@@ -77,6 +87,8 @@ spec: # Especificação do que o template irá realizar.
         targetPath: ./.github
         values:
           name: ${{ parameters.applicationName }}
+          orgName: ${{ parameters.orgName }} # Utiliza o valor do parâmetro 'orgName'.
+          applicationPort: ${{ parameters.applicationPort }} # Utiliza o valor do parâmetro 'applicationPort'.
     # Este passo publica o conteúdo no GitHub.
     - id: publish
       name: Publish
