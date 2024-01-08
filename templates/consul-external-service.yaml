@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: casadocodigo-up
+spec:
+  ports:
+  - protocol: TCP
+    port: 8086
+  type: ExternalName
+  externalName: casadocodigo.service.consul

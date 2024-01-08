@@ -26,8 +26,7 @@ public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Ob
     public boolean isValid(Object value, ConstraintValidatorContext context) {
         Query query = this.manager.createQuery("SELECT 1 FROM " + this.klass.getName() + " WHERE " + this.domainAttribute + "=:value");
         query.setParameter("value", value);
-        List<?> list = query.getResultList();
-        return list.isEmpty();
+        return query.getResultList().isEmpty();
     }
 
 }

@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kong
+  namespace: kong
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: casadocodigo.sulimann.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: kong-kong-proxy
+            port:
+              number: 80
+        path: /
+        pathType: Prefix

@@ -1,6 +1,6 @@
 package com.${{ values.orgName }}.${{ values.name }}.utils;
 
-public class URI {
+public class Path {
 
     public static final String INIT = "/init";
     

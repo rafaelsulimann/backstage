@@ -1,0 +1,38 @@
+# Copyright VMware, Inc.
+# SPDX-License-Identifier: APACHE-2.0
+
+global:
+  imageRegistry: ""
+  imagePullSecrets: []
+  storageClass: ""
+  postgresql:
+    auth:
+      postgresPassword: "postgres"
+      username: "konga"
+      password: "konga"
+      database: "konga"
+image:
+  registry: docker.io
+  repository: bitnami/postgresql
+  tag: 9.6.24-debian-10-r70
+  digest: ""
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+  debug: false
+auth:
+  enablePostgresUser: true
+  postgresPassword: "postgres"
+  username: "konga"
+  password: "konga"
+  database: "konga"
+  replicationUsername: repl_user
+  replicationPassword: ""
+  existingSecret: ""
+  secretKeys:
+    adminPasswordKey: postgres-password
+    userPasswordKey: password
+    replicationPasswordKey: replication-password
+  usePasswordFiles: false
+architecture: standalone
+postgresqlDataDir: /bitnami/postgresql/data
+postgresqlSharedPreloadLibraries: "pgaudit"
