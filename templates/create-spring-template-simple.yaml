@@ -3,9 +3,9 @@ kind: Template # Indica que este documento é um Template no Backstage.
 
 # Seção de metadados sobre o template.
 metadata:
-  name: create-spring-template # Nome único identificador do template.
-  title: Create Spring Template # Título descritivo para o template.
-  description: Create a new Spring Template # Descrição do propósito do template.
+  name: create-spring-template-simple # Nome único identificador do template.
+  title: Create Spring Template Simple # Título descritivo para o template.
+  description: Create a new Simple Spring Template # Descrição do propósito do template.
 
 spec: # Especificação do que o template irá realizar.
   owner: user:guest # Define o proprietário do template, no caso, 'user:guest'.
@@ -64,31 +64,12 @@ spec: # Especificação do que o template irá realizar.
       name: Fetch Java # Nome do passo.
       action: fetch:template # Ação a ser executada: buscar um template.
       input:
-        url: ./skeletons/java/top # URL do template a ser buscado.
-        targetPath: ./app # Caminho onde o template será colocado.
+        url: ./skeletons/java/simple # URL do template a ser buscado.
         values:
           name: ${{ parameters.applicationName }} # Utiliza o valor do parâmetro 'name'.
           orgName: ${{ parameters.orgName }} # Utiliza o valor do parâmetro 'orgName'.
           applicationPort: ${{ parameters.applicationPort }} # Utiliza o valor do parâmetro 'applicationPort'.
           springApplicationName: ${{ parameters.springApplicationName }} # Utiliza o valor do parâmetro 'applicationPort'.
-    - id: fetch-catalog
-      name: Fetch Catalog
-      action: fetch:template
-      input:
-        url: ./skeletons/default
-        targetPath: ./catalog
-        values:
-          name: ${{ parameters.applicationName }}
-    - id: fetch-github-actions
-      name: Fetch GitHub Actions
-      action: fetch:template
-      input:
-        url: ./skeletons/.github
-        targetPath: ./.github
-        values:
-          name: ${{ parameters.applicationName }}
-          orgName: ${{ parameters.orgName }} # Utiliza o valor do parâmetro 'orgName'.
-          applicationPort: ${{ parameters.applicationPort }} # Utiliza o valor do parâmetro 'applicationPort'.
     # Este passo publica o conteúdo no GitHub.
     - id: publish
       name: Publish
@@ -98,19 +79,8 @@ spec: # Especificação do que o template irá realizar.
         description: This is ${{ parameters.name }} # Descrição do repositório.
         repoUrl: ${{ parameters.repoUrl }} # URL do repositório a ser criado ou atualizado.
         repoVisibility: 'public'
-    # Último passo é registrar o componente no catálogo.
-    - id: register
-      name: Register
-      action: catalog:register
-      input:
-        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }} # URL do conteúdo do repositório publicado.
-        catalogInfoPath: '/catalog/catalog-info.yaml' # Caminho para o arquivo de informações do catálogo.
-
   # Saída do template.
   output:
     links:
       - title: Repository # Título do link para o repositório.
         url: ${{ steps['publish'].output.remoteUrl }} # URL do repositório remoto publicado.
-      - title: Open in catalog # Título do link para abrir no catálogo.
-        icon: catalog # Ícone para o link.
-        entityRef: ${{ steps['register'].output.entityRef }} # Referência da entidade registrada.

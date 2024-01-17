@@ -7,5 +7,6 @@ metadata: # Seção de metadados sobre a 'Location'.
 spec: # Especificação da 'Location'.
   type: file # Indica que o tipo desta 'Location' é uma URL.
   targets: # Lista de alvos (targets) para esta 'Location'.
+    - ./create-spring-template-simple.yaml
     - ./create-spring-template.yaml
     - ./create-git-repo.yaml
