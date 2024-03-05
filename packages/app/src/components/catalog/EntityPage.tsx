@@ -1,4 +1,5 @@
 import React from 'react';
+import { apis } from '../../apis';
 import { Button, Grid } from '@material-ui/core';
 import {
   EntityApiDefinitionCard,
@@ -57,6 +58,7 @@ import {
 
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
+import { useApi, configApiRef } from '@backstage/core-plugin-api';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -178,6 +180,29 @@ const serviceEntityPage = (
   </EntityLayout>
 );
 
+const TestContent = () => {
+  const configApi = useApi(configApiRef);
+  console.log(configApi);
+
+  return (
+    <div>
+      <h1>Hello World</h1>
+    </div>
+  );
+};
+
+const testEntityPage = (
+  <EntityLayout>
+    <EntityLayout.Route path="/" title="Overview">
+      {overviewContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/ci-cd" title="CI/CD">
+      <TestContent />
+    </EntityLayout.Route>
+  </EntityLayout>
+);
+
 const websiteEntityPage = (
   <EntityLayout>
     <EntityLayout.Route path="/" title="Overview">
@@ -228,6 +253,10 @@ const componentPage = (
   <EntitySwitch>
     <EntitySwitch.Case if={isComponentType('service')}>
       {serviceEntityPage}
+    </EntitySwitch.Case>
+
+    <EntitySwitch.Case if={isComponentType('test')}>
+      {testEntityPage}
     </EntitySwitch.Case>
 
     <EntitySwitch.Case if={isComponentType('website')}>
