@@ -1,8 +1,6 @@
 app:
   title: Scaffolded Backstage App
   baseUrl: http://localhost:3000
-  test:
-    $env: ${GITHUB_TOKEN}
 
 organization:
   name: My Company
@@ -43,11 +41,14 @@ integrations:
       # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
       # about setting up the GitHub integration here: https://backstage.io/docs/getting-started/configuration#setting-up-a-github-integration
       token: ${GITHUB_TOKEN}
-      test: topzera
     ### Example for how to add your GitHub Enterprise instance using the API:
     # - host: ghe.example.net
     #   apiBaseUrl: https://ghe.example.net/api/v3
     #   token: ${GHE_TOKEN}
+
+sulimann:
+  githubToken: ${GITHUB_TOKEN}
+  test: topzera
 
 proxy:
   ### Example for how to add a proxy endpoint for the frontend.
@@ -69,8 +70,14 @@ techdocs:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
 auth:
-  # see https://backstage.io/docs/auth/ to learn about auth providers
-  providers: {}
+  environment: development
+  providers:
+    github:
+      development:
+        clientId: 69d38f39d22628e0f001
+        clientSecret: e8379cab3b3590df132c3c905e8b88440efd0998
+        ## uncomment if using GitHub Enterprise
+        # enterpriseInstanceUrl: ${AUTH_GITHUB_ENTERPRISE_INSTANCE_URL}
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options

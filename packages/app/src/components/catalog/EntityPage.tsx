@@ -1,5 +1,4 @@
 import React from 'react';
-import { apis } from '../../apis';
 import { Button, Grid } from '@material-ui/core';
 import {
   EntityApiDefinitionCard,
@@ -58,7 +57,7 @@ import {
 
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
-import { useApi, configApiRef } from '@backstage/core-plugin-api';
+import { useApi, configApiRef,  } from '@backstage/core-plugin-api';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -182,11 +181,29 @@ const serviceEntityPage = (
 
 const TestContent = () => {
   const configApi = useApi(configApiRef);
-  console.log(configApi);
+  const githubToken = configApi.getOptionalString('sulimann.githubToken');
+  const test = configApi.getOptionalString('sulimann.test');
+
+  const path = window.location.pathname;
+
+  // Divide o caminho em segmentos baseados no "/"
+  const segments = path.split('/');
+
+  // Encontra a posição do segmento desejado
+  // Supondo que "catalog/default/component" é o prefixo conhecido
+  const prefix = "/catalog/default/component";
+  const indexAfterPrefix = path.indexOf(prefix) + prefix.split('/').length;
+
+  // O valor de tokentest será o segmento após o prefixo conhecido
+  // Verifica se o segmento existe para evitar erro de undefined
+  const tokentest = segments.length > indexAfterPrefix ? segments[indexAfterPrefix] : null;
 
   return (
     <div>
       <h1>Hello World</h1>
+      <h1>{githubToken}</h1>
+      <h1>{test}</h1>
+      <h1>{tokentest}</h1>
     </div>
   );
 };
@@ -198,7 +215,11 @@ const testEntityPage = (
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
-      <TestContent />
+      {cicdContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/github-actions" title="GitHub Actions">
+      <EntityGithubActionsContent />
     </EntityLayout.Route>
   </EntityLayout>
 );
@@ -248,6 +269,8 @@ const defaultEntityPage = (
     </EntityLayout.Route>
   </EntityLayout>
 );
+
+
 
 const componentPage = (
   <EntitySwitch>
