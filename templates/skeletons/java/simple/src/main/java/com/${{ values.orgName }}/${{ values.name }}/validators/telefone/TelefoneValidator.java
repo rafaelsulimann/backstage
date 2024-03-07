@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import main.java.com.${{ values.orgName }}.${{ values.name }}.utils.Regex;
+import com.${{ values.orgName }}.${{ values.name }}.utils.Regex;
 
 public class TelefoneValidator implements ConstraintValidator<Telefone, String>{
 
@@ -18,6 +18,3 @@ public class TelefoneValidator implements ConstraintValidator<Telefone, String>{
     }
 
 }
-
-
-

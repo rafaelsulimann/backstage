@@ -5,6 +5,10 @@ import java.util.regex.Pattern;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.util.StringUtils;
+
+import com.${{ values.orgName }}.${{ values.name }}.utils.Regex;
+
 public class CepValidator implements ConstraintValidator<Cep, String>{
 
     @Override
@@ -16,5 +20,3 @@ public class CepValidator implements ConstraintValidator<Cep, String>{
     }
 
 }
-
-
