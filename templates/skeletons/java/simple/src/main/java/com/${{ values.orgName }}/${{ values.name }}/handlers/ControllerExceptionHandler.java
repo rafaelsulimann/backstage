@@ -2,9 +2,10 @@ package com.${{ values.orgName }}.${{ values.name }}.handlers;
 
 import java.time.LocalDateTime;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -46,7 +47,7 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(HttpStatusCodeException.class)
     public ResponseEntity<CustomErrorDTO> handleHttpStatusCodeException(HttpStatusCodeException e, HttpServletRequest request) {
-        HttpStatus status = e.getStatusCode();
+        HttpStatusCode status = e.getStatusCode();
         CustomErrorDTO error = new CustomErrorDTO(LocalDateTime.now(), status.value(), e.getResponseBodyAsString(), request.getRequestURI());
         return ResponseEntity.status(status).body(error);
     }

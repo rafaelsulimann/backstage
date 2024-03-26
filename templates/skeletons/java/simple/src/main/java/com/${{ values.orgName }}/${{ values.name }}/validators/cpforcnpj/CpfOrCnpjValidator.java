@@ -1,7 +1,7 @@
 package com.${{ values.orgName }}.${{ values.name }}.validators.cpforcnpj;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 import org.hibernate.validator.internal.constraintvalidators.hv.br.CNPJValidator;
 import org.hibernate.validator.internal.constraintvalidators.hv.br.CPFValidator;
@@ -28,4 +28,3 @@ public class CpfOrCnpjValidator implements ConstraintValidator<CpfOrCnpj, String
     }
 
 }
-

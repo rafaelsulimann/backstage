@@ -1,9 +1,9 @@
 package com.${{ values.orgName }}.${{ values.name }}.validators.telefone;
 
-import java.util.regex.Pattern;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import org.springframework.util.StringUtils;
 
 import com.${{ values.orgName }}.${{ values.name }}.utils.Regex;
 
