@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.validators.cpfOrCnpj;
+package com.${{ values.orgName }}.${{ values.name }}.utils.validators.cpfOrCnpj;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -28,4 +28,3 @@ public class CpfOrCnpjValidator implements ConstraintValidator<CpfOrCnpj, String
     }
 
 }
-

@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.validators.uniquevalue;
+package com.${{ values.orgName }}.${{ values.name }}.utils.validators.uniquevalue;
 
 import java.util.List;
 

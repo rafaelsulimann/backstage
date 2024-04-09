@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.validators.telefone;
+package com.${{ values.orgName }}.${{ values.name }}.utils.validators.telefone;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -18,6 +18,5 @@ public @interface Telefone {
     String message() default "Telefone inválido";
     Class<?>[] groups() default {}; //PADRÃO
     Class<? extends Payload>[] payload() default {}; //PADRÃO
-    
-}
 
+}

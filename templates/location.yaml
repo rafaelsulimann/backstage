@@ -9,6 +9,7 @@ spec: # Especificação da 'Location'.
   targets: # Lista de alvos (targets) para esta 'Location'.
     - ./create-react.yaml
     - ./create-spring-template-auth.yaml
-    - ./create-spring-template-simple.yaml
+    - ./create-spring-template-cdd.yaml
     - ./create-spring-template.yaml
+    - ./create-spring-template-clean.yaml
     - ./create-git-repo.yaml

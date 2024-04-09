@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.validators.cep;
+package com.${{ values.orgName }}.${{ values.name }}.utils.validators.cep;
 
 import java.util.regex.Pattern;
 
@@ -16,5 +16,3 @@ public class CepValidator implements ConstraintValidator<Cep, String>{
     }
 
 }
-
-

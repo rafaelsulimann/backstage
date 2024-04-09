@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.utils;
+package com.${{ values.orgName }}.${{ values.name }}.utils.constants;
 
 public final class TableName {
 
@@ -8,5 +8,5 @@ public final class TableName {
     private TableName() {
         throw new AssertionError("Não é permitido instanciar esta classe.");
     }
-    
+
 }

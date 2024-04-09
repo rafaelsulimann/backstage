@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.handlers;
+package com.${{ values.orgName }}.${{ values.name }}.exceptions.handler;
 
 import java.time.LocalDateTime;
 
@@ -18,5 +18,5 @@ public class CustomErrorDTO {
     private Integer status;
     private String error;
     private String path;
-    
+
 }

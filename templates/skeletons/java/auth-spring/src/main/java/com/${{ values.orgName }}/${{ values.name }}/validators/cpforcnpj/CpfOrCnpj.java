@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.validators.cpforcnpj;
+package com.${{ values.orgName }}.${{ values.name }}.utils.validators.cpforcnpj;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -20,4 +20,3 @@ public @interface CpfOrCnpj {
     Class<? extends Payload>[] payload() default {}; //PADRÃO
 
 }
-

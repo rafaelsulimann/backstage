@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.handlers;
+package com.${{ values.orgName }}.${{ values.name }}.exceptions.handler;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,5 +11,5 @@ public class FieldMessageDTO {
 
     private String fieldName;
     private String message;
-    
+
 }

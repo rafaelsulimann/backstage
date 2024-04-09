@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.validators.telefone;
+package com.${{ values.orgName }}.${{ values.name }}.utils.validators.telefone;
 
 import java.util.regex.Pattern;
 
@@ -18,6 +18,3 @@ public class TelefoneValidator implements ConstraintValidator<Telefone, String>{
     }
 
 }
-
-
-

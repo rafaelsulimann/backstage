@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.validators.uniquevalue;
+package com.${{ values.orgName }}.${{ values.name }}.utils.validators.uniquevalue;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -20,5 +20,5 @@ public @interface UniqueValue {
     Class<? extends Payload>[] payload() default {}; //PADRÃO
     String fieldName();
     Class<?> domainClass();
-    
+
 }

@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.validators.cep;
+package com.${{ values.orgName }}.${{ values.name }}.utils.validators.cep;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -18,5 +18,5 @@ public @interface Cep {
     String message() default "CEP inválido";
     Class<?>[] groups() default {}; //PADRÃO
     Class<? extends Payload>[] payload() default {}; //PADRÃO
-    
+
 }

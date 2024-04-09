@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.handlers;
+package com.${{ values.orgName }}.${{ values.name }}.exceptions.handler;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,11 +14,11 @@ public class ValidationErrorDTO extends CustomErrorDTO{
 
     public List<FieldMessageDTO> getErrors() {
         return errors;
-    }    
+    }
 
     public void addError(FieldMessageDTO error) {
         errors.removeIf(x -> x.getFieldName().equals(error.getFieldName()));
         errors.add(error);
     }
-    
+
 }

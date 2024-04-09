@@ -1,0 +1,86 @@
+apiVersion: scaffolder.backstage.io/v1beta3 # Especifica a versão da API do scaffolder do Backstage utilizada.
+kind: Template # Indica que este documento é um Template no Backstage.
+
+# Seção de metadados sobre o template.
+metadata:
+  name: create-spring-template-cdd # Nome único identificador do template.
+  title: Create Spring Template Cdd # Título descritivo para o template.
+  description: Create a new Cdd Spring Template # Descrição do propósito do template.
+
+spec: # Especificação do que o template irá realizar.
+  owner: user:guest # Define o proprietário do template, no caso, 'user:guest'.
+  type: service # Tipo do componente que será criado pelo template.
+
+  # Definição dos parâmetros que o usuário deve fornecer.
+  parameters:
+    - title: Fill in some steps # Título para o grupo de parâmetros.
+      required:
+        - name # Campo 'name' é obrigatório.
+      properties:
+        name:
+          title: Name # Título para o campo 'name'.
+          type: string # Tipo de dado para 'name', uma string.
+          description: Unique name of the component # Descrição do campo 'name'.
+          ui:autofocus: true # Este campo receberá foco automaticamente na interface.
+          ui:options:
+            rows: 5 # Opções de UI, define o número de linhas para o campo.
+    - title: Choose a location # Título para outro grupo de parâmetros.
+      required:
+        - repoUrl # Campo 'repoUrl' é obrigatório.
+      properties:
+        repoUrl:
+          title: Repository Location # Título para o campo 'repoUrl'.
+          type: string # Tipo de dado para 'repoUrl', uma string.
+          ui:field: RepoUrlPicker # Especifica um campo de seleção de URL na UI.
+          ui:options:
+            allowedHosts:
+              - github.com # Hosts permitidos para a URL, neste caso 'github.com'.
+    - title: Spring Template Infos
+      required:
+        - orgName
+        - applicationName
+      properties:
+        orgName:
+          title: Organization Name
+          type: string
+          description: Inserir nome sem letras maiúsculas e tudo junto
+        applicationName:
+          title: Application Name
+          type: string
+          description: nome da aplicação sem letras maiúsculas e tudo junto
+        applicationPort:
+          title: Application Port
+          type: string
+          description: Application Port. Ex:8080
+        springApplicationName:
+          title: Spring Application Name
+          type: string
+          description: Nome da classe principal do Spring. ex:Teste OBS:***Observação:Inserir sempre a primeira letra maiúscula e também em CamelCase, pois será o nome de uma classe
+
+  # Define os passos que o scaffolder executará.
+  steps:
+    # Comentários removidos são um exemplo de passo comentado.
+    - id: fetch-java # Identificador único para este passo.
+      name: Fetch Java # Nome do passo.
+      action: fetch:template # Ação a ser executada: buscar um template.
+      input:
+        url: ./skeletons/java/cdd # URL do template a ser buscado.
+        values:
+          name: ${{ parameters.applicationName }} # Utiliza o valor do parâmetro 'name'.
+          orgName: ${{ parameters.orgName }} # Utiliza o valor do parâmetro 'orgName'.
+          applicationPort: ${{ parameters.applicationPort }} # Utiliza o valor do parâmetro 'applicationPort'.
+          springApplicationName: ${{ parameters.springApplicationName }} # Utiliza o valor do parâmetro 'applicationPort'.
+    # Este passo publica o conteúdo no GitHub.
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ['github.com'] # Restringe a publicação ao host 'github.com'.
+        description: This is ${{ parameters.name }} # Descrição do repositório.
+        repoUrl: ${{ parameters.repoUrl }} # URL do repositório a ser criado ou atualizado.
+        repoVisibility: 'public'
+  # Saída do template.
+  output:
+    links:
+      - title: Repository # Título do link para o repositório.
+        url: ${{ steps['publish'].output.remoteUrl }} # URL do repositório remoto publicado.

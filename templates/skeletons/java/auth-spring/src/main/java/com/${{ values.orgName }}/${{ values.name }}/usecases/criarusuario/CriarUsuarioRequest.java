@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.Length;
 
 import com.${{ values.orgName }}.${{ values.name }}.models.Usuario;
 import com.${{ values.orgName }}.${{ values.name }}.utils.ErrorMessage;
-import com.${{ values.orgName }}.${{ values.name }}.validators.uniquevalue.UniqueValue;
+import com.${{ values.orgName }}.${{ values.name }}.utils.validators.uniquevalue.UniqueValue;
 
 import lombok.Getter;
 

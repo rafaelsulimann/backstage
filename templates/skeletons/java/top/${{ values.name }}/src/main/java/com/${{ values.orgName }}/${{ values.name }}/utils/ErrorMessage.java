@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.utils;
+package com.${{ values.orgName }}.${{ values.name }}.utils.constants;
 
 public final class ErrorMessage {
 
@@ -8,5 +8,5 @@ public final class ErrorMessage {
     private ErrorMessage() {
         throw new AssertionError("Não é permitido instanciar esta classe.");
     }
-    
+
 }

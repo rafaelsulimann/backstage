@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.validators.existsById;
+package com.${{ values.orgName }}.${{ values.name }}.utils.validators.existsById;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -20,6 +20,5 @@ public @interface ExistsById {
     Class<? extends Payload>[] payload() default {}; //PADRÃO
     String fieldName();
     Class<?> domainClass();
-    
-}
 
+}

@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.validators.existsbyid;
+package com.${{ values.orgName }}.${{ values.name }}.utils.validators.existsbyid;
 
 import java.util.List;
 import java.util.Objects;
@@ -34,4 +34,3 @@ public class ExistsByIdValidator implements ConstraintValidator<ExistsById, Obje
     }
 
 }
-

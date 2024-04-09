@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.utils;
+package com.${{ values.orgName }}.${{ values.name }}.utils.constants;
 
 public final class Path {
 
@@ -7,5 +7,5 @@ public final class Path {
     private Path() {
         throw new AssertionError("Não é permitido instanciar esta classe.");
     }
-    
+
 }

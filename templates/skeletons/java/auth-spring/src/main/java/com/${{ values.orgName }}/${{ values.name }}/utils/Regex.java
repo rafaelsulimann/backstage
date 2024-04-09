@@ -1,4 +1,4 @@
-package com.${{ values.orgName }}.${{ values.name }}.utils;
+package com.${{ values.orgName }}.${{ values.name }}.utils.constants;
 
 public final class Regex {
 
@@ -11,5 +11,5 @@ public final class Regex {
     private Regex() {
         throw new AssertionError("Não é permitido instanciar esta classe.");
     }
-    
+
 }
