@@ -2,7 +2,7 @@ package com.${{ values.orgName }}.${{ values.name }}.infra.controllers.usuario.c
 
 import com.${{ values.orgName }}.${{ values.name }}.core.constants.ErrorMessage;
 import com.${{ values.orgName }}.${{ values.name }}.core.usecases.usuario.criarusuario.ICriarUsuarioRequest;
-import com.${{ values.orgName }}.${{ values.name }}.domain.enums.TipoUsuario;
+import com.${{ values.orgName }}.${{ values.name }}.core.domain.enums.TipoUsuario;
 import com.${{ values.orgName }}.${{ values.name }}.infra.entities.UsuarioEntity;
 import com.${{ values.orgName }}.${{ values.name }}.infra.utils.validators.cpforcnpj.CpfOrCnpj;
 import com.${{ values.orgName }}.${{ values.name }}.infra.utils.validators.uniquevalue.UniqueValue;

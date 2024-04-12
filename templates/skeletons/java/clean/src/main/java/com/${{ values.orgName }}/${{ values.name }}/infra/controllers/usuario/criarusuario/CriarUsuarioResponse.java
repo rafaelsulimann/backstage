@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.${{ values.orgName }}.${{ values.name }}.core.usecases.usuario.criarusuario.ICriarUsuarioResponse;
-import com.${{ values.orgName }}.${{ values.name }}.domain.enums.TipoUsuario;
+import com.${{ values.orgName }}.${{ values.name }}.core.domain.enums.TipoUsuario;
 
 import lombok.Builder;
 import lombok.Getter;

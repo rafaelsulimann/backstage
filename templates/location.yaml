@@ -12,4 +12,5 @@ spec: # Especificação da 'Location'.
     - ./create-spring-template-cdd.yaml
     - ./create-spring-template.yaml
     - ./create-spring-template-clean.yaml
+    - ./create-spring-template-camadas.yaml
     - ./create-git-repo.yaml

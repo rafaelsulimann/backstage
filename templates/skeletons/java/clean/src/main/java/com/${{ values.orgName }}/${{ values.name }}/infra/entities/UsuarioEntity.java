@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.${{ values.orgName }}.${{ values.name }}.core.constants.TableName;
-import com.${{ values.orgName }}.${{ values.name }}.domain.entities.IUsuario;
-import com.${{ values.orgName }}.${{ values.name }}.domain.enums.TipoUsuario;
+import com.${{ values.orgName }}.${{ values.name }}.core.domain.entities.IUsuario;
+import com.${{ values.orgName }}.${{ values.name }}.core.domain.enums.TipoUsuario;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

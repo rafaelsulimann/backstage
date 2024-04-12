@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.${{ values.orgName }}.${{ values.name }}.core.usecases.usuario.criarusuario.ICriarUsuarioMapper;
 import com.${{ values.orgName }}.${{ values.name }}.core.usecases.usuario.criarusuario.ICriarUsuarioRequest;
 import com.${{ values.orgName }}.${{ values.name }}.core.usecases.usuario.criarusuario.ICriarUsuarioResponse;
-import com.${{ values.orgName }}.${{ values.name }}.domain.enums.TipoUsuario;
+import com.${{ values.orgName }}.${{ values.name }}.core.domain.enums.TipoUsuario;
 import com.${{ values.orgName }}.${{ values.name }}.infra.entities.UsuarioEntity;
 
 @Component

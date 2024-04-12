@@ -1,8 +1,8 @@
-package com.${{ values.orgName }}.${{ values.name }}.domain.entities;
+package com.${{ values.orgName }}.${{ values.name }}.core.domain.entities;
 
 import java.time.LocalDateTime;
 
-import com.${{ values.orgName }}.${{ values.name }}.domain.enums.TipoUsuario;
+import com.${{ values.orgName }}.${{ values.name }}.core.domain.enums.TipoUsuario;
 
 public interface IUsuario{
   Long getId();
