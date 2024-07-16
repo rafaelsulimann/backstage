@@ -9,12 +9,7 @@ ENV POSTGRES_HOST=localhost
 ENV POSTGRES_PORT=5432
 ENV POSTGRES_DATABASE=test
 ENV APP_PROFILE=test
-ENV CLIENT_ID=myclientid
-ENV CLIENT_SECRET=myclientsecret
-ENV JWT_SECRET=myjwtsecret
-ENV JWT_DURATION=86400
 ENV CORS_ORIGINS="https://${{ values.orgName }}.com.br,http://localhost:3000,http://localhost:5173,"
-ENV CLIENT_SECRET=myclientsecret
 COPY --from=builder /app/target/${{ values.name }}-0.0.1-SNAPSHOT.jar ./${{ values.name }}.jar
 EXPOSE ${{ values.applicationPort }}
 ENTRYPOINT ["java", "-jar", "/app/${{ values.name }}.jar"]
