@@ -17,6 +17,9 @@
 	<properties>
 		<java.version>17</java.version>
 		<springdoc.version>2.0.4</springdoc.version>
+		<flyway.db.url>jdbc:postgresql://${FLYWAY_HOST:localhost}:${FLYWAY_PORT:5433}/${FLYWAY_DB:flyway}</flyway.db.url>
+		<flyway.db.user>${FLYWAY_USER:postgres}</flyway.db.user>
+		<flyway.db.password>${FLYWAY_PASSWORD:1234567}</flyway.db.password>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -92,6 +95,14 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-database-postgresql</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -112,7 +123,45 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<configuration>
+					<url>${flyway.db.url}</url>
+					<user>${flyway.db.user}</user>
+					<password>${flyway.db.password}</password>
+					<!-- <cleanDisabled>false</cleanDisabled> -->
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>applyDbMigration</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>exec-maven-plugin</artifactId>
+						<version>3.0.0</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>exec</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<executable>mvn</executable>
+							<arguments>
+								<argument>flyway:migrate</argument>
+							</arguments>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>

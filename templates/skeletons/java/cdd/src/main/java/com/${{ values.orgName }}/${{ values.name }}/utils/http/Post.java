@@ -13,4 +13,3 @@ public class Post extends HttpPadrao {
     }
 
 }
-
