@@ -6,7 +6,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.${{ values.orgName }}.${{ values.name }}.exceptions.PicPayException;
+import com.${{ values.orgName }}.${{ values.name }}.exceptions.${{ values.springApplicationName }}Exception;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {
@@ -26,8 +26,8 @@ public class ControllerExceptionHandler {
         return pb;
     }
 
-    @ExceptionHandler(${{ values.name }}Exception.class)
-    public ProblemDetail handle${{ values.name }}Exception(${{ values.name }}Exception e){
+    @ExceptionHandler(${{ values.springApplicationName }}Exception.class)
+    public ProblemDetail handle${{ values.springApplicationName }}Exception(${{ values.springApplicationName }}Exception e){
         return e.toProblemDetail();
     }
 
